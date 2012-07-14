@@ -28,7 +28,15 @@
             color: new Color(255,0,0)
         });
 
-        var drawables = [background, platform, runner];
+        window.cloud = new ER.Cloud({
+            x: 400,
+            y: 250,
+            width: 80,
+            height: 80,
+            color: new Color(255,255,255)
+        });
+
+        var drawables = [background, platform, runner, cloud];
         draw();
 
         function draw(){
