@@ -9,8 +9,23 @@
         ctx.canvasHeight = height;
         ctx.canvasWidth = width;
 
-        var platform = new ER.Drawable(0,0,width,100);
-        platform.draw(ctx);
+        var platform = new ER.Drawable({
+            width: width,
+            height: 100
+        });
+
+        var runner = new ER.Drawable({
+            x: 20,
+            y: platform.height+5,
+            width: 20,
+            height: 80
+        });
+
+        var drawables = [platform, runner];
+
+        for(var i = 0; i < drawables.length; i++){
+            drawables[i].draw(ctx);
+        }
     }
 
 })();
