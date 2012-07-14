@@ -33,17 +33,31 @@
             y: 250,
             width: 80,
             height: 80,
-            color: new Color(255,255,255)
+            color: new Color(255,255,255),
+            vx: -5
         });
 
-        var drawables = [background, platform, runner, cloud];
-        draw();
+        var actors = [background, platform, runner, cloud];
 
-        function draw(){
-            for(var i = 0; i < drawables.length; i++){
-                drawables[i].draw(ctx);
+        var lastTime = new Date().getTime();
+        function animate(){
+            var currTime = new Date().getTime();
+            var timeSpan = currTime - lastTime;
+            lastTime = currTime;
+            step(timeSpan);
+            requestAnimationFrame(animate, canvas);
+        }
+
+        function step(timeSpan){
+            for(var i = 0; i < actors.length; i++){
+                actors[i].step(timeSpan);
+            }
+            for(var i = 0; i < actors.length; i++){
+                actors[i].draw(ctx);
             }
         }
+
+        animate();
     }
 
 

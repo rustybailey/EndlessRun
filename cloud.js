@@ -6,7 +6,10 @@ window.ER = window.ER || {};
 
     ER.Cloud.prototype = Object.create(ER.Actor.prototype);
 
-    ER.Cloud.prototype.step = function(){
-        console.log("step");
-    };
+    Utils.extend(ER.Cloud.prototype, {
+        step2: function(timeSpan){
+
+        }
+    });
+
 })();

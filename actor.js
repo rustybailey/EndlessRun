@@ -5,7 +5,9 @@ window.ER = window.ER || {};
         height: 1,
         x: 0,
         y: 0,
-        color: new Color(0,0,0)
+        color: new Color(0,0,0),
+        vx: 0,
+        yx: 0
     };
 
     ER.Actor = function(props){
@@ -16,6 +18,10 @@ window.ER = window.ER || {};
         draw:function(ctx){
             ctx.fillStyle = this.color.toString();
             ctx.fillRect(this.x, ctx.canvasHeight - this.y - this.height, this.width, this.height);
+        }, 
+        step: function(timeSpan){
+            this.x += this.vx;
+            this.y += this.yx;
         }
     };
 })();
