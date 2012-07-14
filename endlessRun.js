@@ -9,12 +9,18 @@
         ctx.canvasHeight = height;
         ctx.canvasWidth = width;
 
-        var platform = new ER.Drawable({
+        var background = new ER.Actor({
+            width: width,
+            height: height,
+            color: new Color(77,188,233)
+        });
+
+        var platform = new ER.Actor({
             width: width,
             height: 100
         });
 
-        var runner = new ER.Drawable({
+        var runner = new ER.Actor({
             x: 20,
             y: platform.height+5,
             width: 20,
@@ -22,11 +28,15 @@
             color: new Color(255,0,0)
         });
 
-        var drawables = [platform, runner];
+        var drawables = [background, platform, runner];
+        draw();
 
-        for(var i = 0; i < drawables.length; i++){
-            drawables[i].draw(ctx);
+        function draw(){
+            for(var i = 0; i < drawables.length; i++){
+                drawables[i].draw(ctx);
+            }
         }
     }
+
 
 })();

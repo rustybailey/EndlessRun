@@ -8,11 +8,11 @@ window.ER = window.ER || {};
         color: new Color(0,0,0)
     };
 
-    ER.Drawable = function(props){
-        Utils.extend(this,defaults,props);
+    ER.Actor = function(props){
+        Utils.extend(this,Utils.clone(defaults),props);
     };
 
-    ER.Drawable.prototype = {
+    ER.Actor.prototype = {
         draw:function(ctx){
             ctx.fillStyle = this.color.toString();
             ctx.fillRect(this.x, ctx.canvasHeight - this.y - this.height, this.width, this.height);
