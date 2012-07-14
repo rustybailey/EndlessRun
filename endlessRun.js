@@ -12,16 +12,18 @@
         var scene = new ER.Scene(width,height);
 
         var lastTime = new Date().getTime();
+        var frame = 0;
         function animate(){
+            frame++;
             var currTime = new Date().getTime();
             var timeSpan = currTime - lastTime;
             lastTime = currTime;
-            step(timeSpan);
+            step(timeSpan, frame);
             requestAnimationFrame(animate, canvas);
         }
 
         function step(timeSpan){
-            scene.step(timeSpan);
+            scene.step(timeSpan, frame);
             scene.draw(ctx);
         }
         animate();

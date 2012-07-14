@@ -12,4 +12,18 @@ window.ER = window.ER || {};
         }
     });
 
+    ER.Cloud.random = function(sceneWidth, sceneHeight){
+        var width = Utils.randomNumber(80, 150,true);
+        var height = Utils.randomNumber(60, 90,true);
+        var cloud = new ER.Cloud({
+            x: sceneWidth + width + 10,
+            y: Utils.randomNumber(sceneHeight/2, sceneHeight - (height/2), true),
+            width: width,
+            height: height,
+            color: new Color(255,255,255),
+            vx: -5
+        });
+        return cloud;
+    };
+
 })();
