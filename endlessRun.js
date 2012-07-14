@@ -18,7 +18,8 @@
             x: 20,
             y: platform.height+5,
             width: 20,
-            height: 80
+            height: 80,
+            color: new Color(255,0,0)
         });
 
         var drawables = [platform, runner];
