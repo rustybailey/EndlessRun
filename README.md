@@ -1,4 +1,4 @@
-Freworks
+An endless runner game
 =========
 
-An experiment in firework simulation.
+An experiment in making an endless runner
