@@ -1,1 +1,4 @@
-An Endless Run Games
+Fireworks
+=========
+
+An experiment in firework simulation.
