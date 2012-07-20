@@ -23,9 +23,14 @@ window.ER = window.ER || {};
             color: new Color(255,0,0)
         });
 
+
         this.actors = [background, platform, runner];
         this.clouds = [];
         this.addCloud();
+        this.mountains = [];
+        this.addMountain();
+
+
     }
 
     ER.Scene.prototype = {
@@ -46,6 +51,11 @@ window.ER = window.ER || {};
             var cloud = ER.Cloud.random(this.width, this.height);
             this.clouds.push(cloud);
             this.actors.push(cloud);
+        },
+        addMountain: function(){
+            var mountain = ER.Mountain.random(this.width, this.height);
+            this.mountains.push(mountain);
+            this.actors.push(mountain);
         }
     };
 })();
