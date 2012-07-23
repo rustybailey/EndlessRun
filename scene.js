@@ -23,12 +23,12 @@ window.ER = window.ER || {};
             color: new Color(255,0,0)
         });
 
-
-        this.actors = [background, platform, runner];
         this.clouds = [];
         this.addCloud();
         this.mountains = [];
         this.addMountain();
+        this.actors = [background, platform, this.clouds, this.mountains, runner];
+
 
 
     }
@@ -36,7 +36,13 @@ window.ER = window.ER || {};
     ER.Scene.prototype = {
         step: function(timeSpan, frame){
             for(var i = 0; i < this.actors.length; i++){
-                this.actors[i].step(timeSpan);
+                if(typeof this.actors[i] == 'object' && (this.actors[i] instanceof Array)){
+                    for (var j = 0; j < this.actors[i].length; j++) {
+                        this.actors[i][j].step(timeSpan);
+                    }
+                } else {
+                    this.actors[i].step(timeSpan);
+                }
             }
             if(frame % 10 === 0 && Utils.randomNumber(1,3,true) == 1){
                 this.addCloud();
@@ -44,18 +50,24 @@ window.ER = window.ER || {};
         },
         draw: function(ctx){
             for(var i = 0; i < this.actors.length; i++){
-                this.actors[i].draw(ctx);
+                if(typeof this.actors[i] == 'object' && (this.actors[i] instanceof Array)){
+                    for (var j = 0; j < this.actors[i].length; j++) {
+                        this.actors[i][j].draw(ctx);
+                    }
+                } else {
+                    this.actors[i].draw(ctx);
+                }
             }
         },
         addCloud: function(){
             var cloud = ER.Cloud.random(this.width, this.height);
             this.clouds.push(cloud);
-            this.actors.push(cloud);
+     
         },
         addMountain: function(){
             var mountain = ER.Mountain.random(this.width, this.height);
             this.mountains.push(mountain);
-            this.actors.push(mountain);
+   
         }
     };
 })();
