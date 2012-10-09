@@ -27,5 +27,8 @@
             scene.draw(ctx);
         }
         animate();
+
+        Keys.init();
+        Keys.debug(true);
     }
 })();
