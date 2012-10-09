@@ -20,7 +20,12 @@ window.ER = window.ER || {};
             y: platform.height+5,
             width: 20,
             height: 80,
-            color: new Color(255,0,0)
+            color: new Color(255,0,0),
+            step: function(timeSpan){
+                if(Keys.RIGHT){
+                    this.x += 1;
+                }
+            }
         });
 
         this.clouds = [];
